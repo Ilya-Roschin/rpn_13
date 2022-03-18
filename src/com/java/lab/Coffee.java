@@ -1,5 +1,7 @@
 package com.java.lab;
 
+import java.util.Objects;
+
 public class Coffee {
 
     private String type;
@@ -70,5 +72,16 @@ public class Coffee {
                 ", sortOfCoffee='" + sortOfCoffee + '\'';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coffee coffee = (Coffee) o;
+        return Double.compare(coffee.coast, coast) == 0 && Double.compare(coffee.weight, weight) == 0 && Double.compare(coffee.numberOfCoffees, numberOfCoffees) == 0 && Objects.equals(type, coffee.type) && Objects.equals(sortOfCoffee, coffee.sortOfCoffee);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, coast, weight, numberOfCoffees, sortOfCoffee);
+    }
 }
